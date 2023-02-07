@@ -1,7 +1,6 @@
 <?php
-
+    // array hotel
     $hotels = [
-
         [
             'name' => 'Hotel Belvedere',
             'description' => 'Hotel Belvedere Descrizione',
@@ -37,9 +36,10 @@
             'vote' => 2,
             'distance_to_center' => 50
         ],
-
     ];
 
+    // prendo le chiavi dell'array
+    $hotels_keys = array_keys($hotels[0]);
 ?>
 
 
@@ -54,6 +54,29 @@
     <title>Hotels</title>
 </head>
 <body>
-    
+    <div class='container my-5 text-center'>
+        <h1>Hotels Table</h1>
+        <table class="table my-4">
+          <thead>
+            <tr>
+                <!-- stampo l'array delle chiavi -->
+                <?php for($i = 0; $i < count($hotels_keys); $i++) : ?>
+                    <th scope="col"><?= $hotels_keys[$i] ?></th>
+                <?php endfor; ?>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ciclo dentro l'array degli hotel -->
+            <?php foreach($hotels as $hotel) : ?>
+                <tr>
+                <!-- ciclo i value di ogni singolo hotel -->
+                    <?php foreach($hotel as $value) : ?>
+                        <td><?= $value ?></td>
+                    <?php endforeach ?>
+                </tr>
+            <?php endforeach ?>
+          </tbody>
+        </table>
+    </div>
 </body>
 </html>
